@@ -1,10 +1,20 @@
 def celsius_to_fahrenheit(celsius):
+    if(jeToReady(celsius) == False):
+        raise valueError()
     fahrenheit = (celsius * 9/5) + 32
     return fahrenheit
 
 def fahrenheit_to_celsius(fahrenheit):
+    if(jeToReady(fahrenheit) == False):
+        raise valueError()
     celsius = (fahrenheit - 32) * 5/9
     return celsius
+
+def jeToReady(abc):
+    if isinstance(abc, int):
+        return True
+    else:    
+        return False
 
 def fibonacci(user_input):
     if(isinstance(user_input,int))
