@@ -37,6 +37,7 @@ try:
     celsius = 25
     fahrenheit = celsius_to_fahrenheit(celsius)
     print(f"{celsius}°C is {fahrenheit}°F")
+    
 
     fahrenheit = 77
     celsius = fahrenheit_to_celsius(fahrenheit)
@@ -48,3 +49,20 @@ try:
     print("Fibonacci sequence:", fib_sequence)
 except ValueError as e:
     print(f"Error: {e}")
+
+    # Check if a number is prime
+def is_prime(number):
+    if not isinstance(number, int):
+        raise ValueError("Input must be an integer.")
+    if number < 2:
+        return False
+    for i in range(2, int(number ** 0.5) + 1):
+        if number % i == 0:
+            return False
+    return True
+    
+    number = 17
+    if is_prime(number):
+        print(f"{number} is prime")
+    else:
+        print(f"{number} is not prime")
