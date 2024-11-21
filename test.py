@@ -6,7 +6,7 @@ def fahrenheit_to_celsius(fahrenheit):
     celsius = (fahrenheit - 32) * 5/9
     return celsius
 
-def fibonacci():
+def fibonacci(user_input):
     while True:
         try:
             user_input = int(input("Enter an integer: "))
