@@ -17,8 +17,9 @@ def jeToReady(abc):
         return False
 
 def fibonacci(user_input):
-    if(isinstance(user_input,int))
-    if user_input == 1:
+    if(isinstance(user_input,int) == False) :
+        raise valueError()
+    elif user_input == 1:
         return [0]
     elif user_input == 2:
         return [0, 1]
