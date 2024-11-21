@@ -7,16 +7,7 @@ def fahrenheit_to_celsius(fahrenheit):
     return celsius
 
 def fibonacci(user_input):
-    while True:
-        try:
-            user_input = int(input("Enter an integer: "))
-            if user_input <= 0:
-                print("Please enter a positive integer.")
-                continue
-            break
-        except ValueError:
-            print("Invalid input. Please enter an integer.")
-
+    if(isinstance(user_input,int))
     if user_input == 1:
         return [0]
     elif user_input == 2:
