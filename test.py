@@ -1,24 +1,25 @@
+# Convert Celsius to Fahrenheit
 def celsius_to_fahrenheit(celsius):
-    if(jeToReady(celsius) == False):
-        raise valueError()
+    if not isinstance(celsius, (int, float)):
+        raise ValueError("Input must be a number.")
     fahrenheit = (celsius * 9/5) + 32
     return fahrenheit
 
+# Convert Fahrenheit to Celsius
 def fahrenheit_to_celsius(fahrenheit):
-    if(jeToReady(fahrenheit) == False):
-        raise valueError()
+    if not isinstance(fahrenheit, (int, float)):
+        raise ValueError("Input must be a number.")
     celsius = (fahrenheit - 32) * 5/9
     return celsius
 
-def jeToReady(abc):
-    if isinstance(abc, int):
-        return True
-    else:    
-        return False
+# Check if input is a valid number
+def is_valid_number(value):
+    return isinstance(value, (int, float))
 
+# Generate Fibonacci sequence
 def fibonacci(user_input):
-    if(isinstance(user_input,int) == False) :
-        raise valueError()
+    if not isinstance(user_input, int) or user_input <= 0:
+        raise ValueError("Input must be a positive integer.")
     elif user_input == 1:
         return [0]
     elif user_input == 2:
@@ -30,6 +31,20 @@ def fibonacci(user_input):
             fib_sequence.append(next_num)
         return fib_sequence
 
+# Example Usage
+try:
+    # Test temperature conversions
+    celsius = 25
+    fahrenheit = celsius_to_fahrenheit(celsius)
+    print(f"{celsius}°C is {fahrenheit}°F")
 
-fib_sequence = fibonacci()
-print("Fibonacci sequence:", fib_sequence)
+    fahrenheit = 77
+    celsius = fahrenheit_to_celsius(fahrenheit)
+    print(f"{fahrenheit}°F is {celsius}°C")
+
+    # Test Fibonacci sequence
+    user_input = int(input("Enter the number of Fibonacci terms: "))
+    fib_sequence = fibonacci(user_input)
+    print("Fibonacci sequence:", fib_sequence)
+except ValueError as e:
+    print(f"Error: {e}")
