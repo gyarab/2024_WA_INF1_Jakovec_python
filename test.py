@@ -3,4 +3,3 @@ def rotate_array(arr, n):
         return arr[-n:] + arr[:-n]
     else:
         return "Invalid input"
-print (rotate_array([1, 2, 3, 4, 5, 6], "d")) # [5, 6, 1, 2, 3, 4]
