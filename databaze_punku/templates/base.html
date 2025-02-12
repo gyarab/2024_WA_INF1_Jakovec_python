@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Databáze Punku{% endblock %}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        a {
+            color: #ffcc00;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 10px;
+        }
+        .navbar {
+            background-color: #444;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar .links {
+            display: flex;
+            gap: 15px;
+        }
+        form.search-form {
+            display: flex;
+            gap: 5px;
+        }
+        input[type="text"] {
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+        }
+        button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ffcc00;
+            color: #000;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ffaa00;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="links">
+            <a href="{% url 'home' %}">Domů</a>
+            <a href="{% url 'admin:index' %}">Admin</a>
+        </div>
+        <form class="search-form" action="{% url 'search' %}" method="GET">
+            <input type="text" name="q" placeholder="Hledat" required>
+            <button type="submit">Hledat</button>
+        </form>
+    </div>
+
+    <div class="container">
+        {% block content %}{% endblock %}
+        {% if request.path != '/' %}
+            <a href="/">Zpět</a>
+        {% endif %}
+    </div>
+</body>
+</html>
