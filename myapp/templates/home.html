@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Databáze Punku!{% endblock %}
+<body>
+    <head>
+        <style>
+            body {
+                background-image: url('https://wallpapercave.com/wp/wp3154239.jpg');
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+            }
+        </style>
+    </head>
+</body>
+{% block content %}
+    <h1>Vítej v Databázi Punku !!</h1>
+    
+    <h2>Kapely</h2>
+    <ul>
+        {% for band in bands %}
+            <li><a href="{% url 'band_detail' band.id %}">{{ band.name }}</a></li>
+        {% empty %}
+            <li>Žádné kapely nejsou k dispozici.</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Poslední alba</h2>
+    <ul>
+        {% for album in albums %}
+            <li>
+                <a href="{% url 'album_detail' album.id %}">{{ album.title }}</a> - 
+                <a href="{% url 'band_detail' album.band.id %}">{{ album.band.name }}</a> 
+                ({{ album.release_year }})
+            </li>
+        {% empty %}
+            <li>Žádná alba nejsou k dispozici.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Výsledky hledání{% endblock %}
+
+{% block content %}
+    <h1>Výsledky pro: "{{ query }}"</h1>
+
+    {% if bands or songs or albums %}
+        {% if bands %}
+            <h2>Kapely</h2>
+            <ul>
+                {% for band in bands %}
+                    <li><a href="{% url 'band_detail' band.id %}">{{ band.name }}</a></li>
+                {% empty %}
+                    <li>Žádné kapely nenalezeny.😟🎸</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        {% if songs %}
+            <h2>Písně</h2>
+            <ul>
+                {% for song in songs %}
+                    <li><a href="{{ song.url }}" target="_blank">{{ song.title }}</a> (<a href="{% url 'album_detail' song.album.id %}">{{ song.album.title }}</a>) - <a href="{% url 'band_detail' song.album.band.id %}">{{ song.album.band.name }}</a></li>
+                {% empty %}
+                    <li>Žádné písně nenalezeny.😟🥁</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        {% if albums %}
+            <h2>Alba</h2>
+            <ul>
+                {% for album in albums %}
+                    <li><a href="{% url 'album_detail' album.id %}">{{ album.title }}</a> - <a href="{% url 'band_detail' album.band.id %}">{{ album.band.name }}</a></li>
+                {% empty %}
+                    <li>Žádná alba nenalezena.😟💿</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+    {% else %}
+        <p>Vůbec nic nenalezeno.</p>
+    {% endif %}
+{% endblock %}

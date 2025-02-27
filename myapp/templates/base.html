@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Databáze Punku{% endblock %}</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://wallpapercave.com/wp/wp3154239.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #f0f0f0e7;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        /* Transparent Overlay */
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.7); /* Dark overlay for readability */
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+        }
+
+        .navbar .links a {
+            color: #ffcc00;
+            margin: 0 10px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .navbar .links a:hover {
+            color: #ffaa00;
+        }
+
+        /* Search Form */
+        .search-form {
+            display: flex;
+            gap: 5px;
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            border-radius: 5px;
+            border: none;
+            background: #222;
+            color: #fff;
+        }
+
+        button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ffcc00;
+            color: #000;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #ffaa00;
+        }
+
+        /* Main Container */
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            background-color: rgba(36, 36, 36, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Lists */
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+
+        a {
+            color: #ffcc00;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.15s;
+        }
+
+        a:hover {
+            color: #ffaa00;
+            text-decoration: underline;
+        }
+        
+    </style>
+</head>
+<body>
+
+<div class="overlay">
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="links">
+            <a href="{% url 'home' %}">Domů</a>
+            <a href="{% url 'admin:index' %}">Admin</a>
+        </div>
+        <form class="search-form" action="{% url 'search' %}" method="GET">
+            <input type="text" name="q" placeholder="Hledat" required>
+            <button type="submit">Hledat</button>
+        </form>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        {% block content %}{% endblock %}
+        {% if request.path != '/' %}
+            <a href="/">Zpět</a>
+        {% endif %}
+    </div>
+</div>
+
+</body>
+</html>

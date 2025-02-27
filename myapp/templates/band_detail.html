@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}{{ band.name }} - Info{% endblock %}
+
+{% block content %}
+<body>
+    <h1>{{ band.name }}</h1>
+    <p><strong>Původ:</strong> {{ band.origin }}</p>
+    <p><strong>Založená:</strong> {{ band.founded_year }}</p>
+    
+    <h2>Popis kapely</h2>
+    <p>{{ band.description }}</p>
+
+    <h2>Alba</h2>
+    {% for album in albums %}
+        <ul>
+            <a href="{% url 'album_detail' album.id %}">{{ album.title }}</a> ({{ album.release_year }})
+        </ul>
+    {% empty %}
+        <li>Tato kapela nevydala žádná alba.</li>
+    {% endfor %}
+</body>
+{% endblock %}
