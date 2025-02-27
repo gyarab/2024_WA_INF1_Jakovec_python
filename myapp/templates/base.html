@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Databáze Punku{% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
     <style>
-        /* General Styling */
         body {
             font-family: Arial, sans-serif;
             background: url('https://wallpapercave.com/wp/wp3154239.jpg') no-repeat center center fixed;
@@ -16,14 +17,12 @@
             text-align: center;
         }
 
-        /* Transparent Overlay */
         .overlay {
             background-color: rgba(0, 0, 0, 0.7); /* Dark overlay for readability */
             min-height: 100vh;
             padding: 20px;
         }
 
-        /* Navbar */
         .navbar {
             background: rgba(0, 0, 0, 0.8);
             padding-top: 15px;
@@ -51,7 +50,6 @@
             color: #ffaa00;
         }
 
-        /* Search Form */
         .search-form {
             display: flex;
             gap: 5px;
@@ -79,7 +77,6 @@
             background-color: #ffaa00;
         }
 
-        /* Main Container */
         .container {
             width: 80%;
             margin: auto;
@@ -89,7 +86,6 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         }
 
-        /* Lists */
         ul {
             list-style-type: none;
             padding-left: 0;
