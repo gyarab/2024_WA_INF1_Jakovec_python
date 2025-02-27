@@ -1,0 +1,29 @@
+[
+{
+    "model": "myapp.band",
+    "pk": 1,
+    "fields": {
+        "name": "Znouzectnost",
+        "origin": "Plzeň",
+        "founded_year": 1986
+    }
+},
+{
+    "model": "myapp.album",
+    "pk": 1,
+    "fields": {
+        "title": "The End...?",
+        "release_year": 2024,
+        "band": 1
+    }
+},
+{
+    "model": "myapp.song",
+    "pk": 1,
+    "fields": {
+        "title": "Všechny krásy světa",
+        "album": 1,
+        "url": "https://tabs.ultimate-guitar.com/tab/5446758"
+    }
+}
+]
