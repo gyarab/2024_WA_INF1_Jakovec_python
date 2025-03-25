@@ -1,5 +1,5 @@
-from django.shortcuts import render, get_object_or_404
-from .models import Band, Album, Song
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Band, Album, Song, Comment
 
 def home(request):
     bands = Band.objects.all()  # Fetch all the bands
@@ -13,11 +13,31 @@ def band_detail(request, band_id):
 
 def album_detail(request, album_id):
     album = get_object_or_404(Album, id=album_id)
-    return render(request, 'album_detail.html', {'album': album, 'songs': album.songs.all()})
+    comments = album.comments.all()
+
+    if request.method == "POST":
+        username = request.POST.get("username")
+        text = request.POST.get("text")
+
+        if username and text:
+            Comment.objects.create(username=username, text=text, album=album)
+            return redirect('album_detail', album_id=album.id)
+
+    return render(request, 'album_detail.html', {'album': album, 'songs': album.songs.all(), 'comments': comments})
 
 def song_detail(request, song_id):
     song = get_object_or_404(Song, id=song_id)
-    return render(request, 'song_detail.html', {'song': song})
+    comments = song.comments.all()
+
+    if request.method == "POST":
+        username = request.POST.get("username")
+        text = request.POST.get("text")
+
+        if username and text:
+            Comment.objects.create(username=username, text=text, song=song)
+            return redirect('song_detail', song_id=song.id)
+
+    return render(request, 'song_detail.html', {'song': song, 'comments': comments})
 
 def search(request):
     query = request.GET.get('q', '')
