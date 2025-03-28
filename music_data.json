@@ -14,7 +14,8 @@
     "fields": {
         "title": "The End...?",
         "release_year": 2024,
-        "band": 1
+        "band": 1,
+        "cover_url": "https://supraphonline.cz/cover/200/2/7/d/807398.jpg?1714060738"
     }
 },
 {
@@ -24,6 +25,123 @@
         "title": "Všechny krásy světa",
         "album": 1,
         "url": "https://tabs.ultimate-guitar.com/tab/5446758"
+    }
+},
+{
+    "model": "myapp.song",
+    "pk": 2,
+    "fields": {
+        "title": "Ráno bude zase líp",
+        "album": 1,
+        "url": "https://tabs.ultimate-guitar.com/tab/5446782"
+    }
+},
+{
+    "model": "myapp.song",
+    "pk": 3,
+    "fields": {
+        "title": "Na řece Léthé",
+        "album": 1,
+        "url": "https://tabs.ultimate-guitar.com/tab/5446875"
+    }
+},
+{
+    "model": "myapp.song",
+    "pk": 4,
+    "fields": {
+        "title": "Nezbytné věci",
+        "album": 1,
+        "url": "https://tabs.ultimate-guitar.com/tab/5488062"
+    }
+},
+{
+    "model": "myapp.song",
+    "pk": 5,
+    "fields": {
+        "title": "Spolčení hlupců",
+        "album": 1,
+        "url": "https://tabs.ultimate-guitar.com/tab/5488140"
+    }
+},
+{
+    "model": "myapp.song",
+    "pk": 6,
+    "fields": {
+        "title": "Všichni proti všem",
+        "album": 1,
+        "url": "https://tabs.ultimate-guitar.com/tab/5491278"
+    }
+},
+{
+    "model": "myapp.song",
+    "pk": 7,
+    "fields": {
+        "title": "Tajemné místo",
+        "album": 1,
+        "url": "https://tabs.ultimate-guitar.com/tab/5491557"
+    }
+},
+{
+    "model": "myapp.song",
+    "pk": 8,
+    "fields": {
+        "title": "Countryblues",
+        "album": 1,
+        "url": "https://tabs.ultimate-guitar.com/tab/znouzectnost/countryblues-chords-5491593"
+    }
+},
+{
+    "model": "myapp.song",
+    "pk": 9,
+    "fields": {
+        "title": "The End",
+        "album": 1,
+        "url": "https://tabs.ultimate-guitar.com/tab/znouzectnost/the-end-chords-5491638"
+    }
+},
+{
+    "model": "myapp.song",
+    "pk": 10,
+    "fields": {
+        "title": "Nechte mě bejt",
+        "album": 1,
+        "url": "https://tabs.ultimate-guitar.com/tab/5491695"
+    }
+},
+{
+    "model": "myapp.song",
+    "pk": 11,
+    "fields": {
+        "title": "My a oni",
+        "album": 1,
+        "url": "https://tabs.ultimate-guitar.com/tab/znouzectnost/my-a-oni-chords-5579931"
+    }
+},
+{
+    "model": "myapp.song",
+    "pk": 12,
+    "fields": {
+        "title": "Pochod ignorantů",
+        "album": 1,
+        "url": "https://tabs.ultimate-guitar.com/tab/5580084"
+    }
+},
+{
+    "model": "myapp.song",
+    "pk": 13,
+    "fields": {
+        "title": "Proudy",
+        "album": 1,
+        "url": "https://tabs.ultimate-guitar.com/tab/5580084"
+    }
+},
+{
+    "model": "myapp.song",
+    "pk": 14,
+    "fields": {
+        "title": "Jedeme domů",
+        "album": 1,
+        "url": "https://tabs.ultimate-guitar.com/tab/5580123"
     }
 }
 ]
