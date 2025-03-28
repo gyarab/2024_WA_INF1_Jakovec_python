@@ -9,7 +9,9 @@
     <p><strong>Založená:</strong> {{ band.founded_year }}</p>
     
     <h2>Popis kapely</h2>
-    <p>{{ band.description }}</p>
+    <div class="band-description">
+        <p>{{ band.description }}</p>
+    </div>
 
     <h2>Alba</h2>
     {% for album in albums %}

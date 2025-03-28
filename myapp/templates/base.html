@@ -151,6 +151,26 @@
             text-align: center;
         }
 
+        .navbar .logo {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffcc00;
+        }
+
+        .navbar .logo a{
+            text-decoration: none;
+        }
+
+        .band-description {
+            max-width: 55%;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 1.35;
+        }
+
     </style>
 </head>
 <body>
@@ -158,15 +178,19 @@
 <div class="overlay">
     <!-- Navbar -->
     <div class="navbar">
-        <div class="links">
-            <a href="{% url 'home' %}">Domů</a>
-            <a href="{% url 'admin:index' %}">Admin</a>
-        </div>
-        <form class="search-form" action="{% url 'search' %}" method="GET">
-            <input type="text" name="q" placeholder="Hledat" required>
-            <button type="submit">Hledat</button>
-        </form>
+    <div class="links">
+        <a href="{% url 'admin:index' %}">Admin</a>
     </div>
+    <!-- Text -->
+    <div class="logo">
+        <a href="{% url 'home' %}">Databáze Punku</a>
+    </div>
+    <form class="search-form" action="{% url 'search' %}" method="GET">
+        <input type="text" name="q" placeholder="Hledat" required>
+        <button type="submit">Hledat</button>
+    </form>
+</div>
+
 
     <!-- Main Content -->
     <div class="container">

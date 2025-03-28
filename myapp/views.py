@@ -2,13 +2,13 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Band, Album, Song, Comment
 
 def home(request):
-    bands = Band.objects.all()  # Fetch all the bands
-    albums = Album.objects.all()[:5]  # Fetch the first 5 albums
+    bands = Band.objects.all()
+    albums = Album.objects.all()[:5]
     return render(request, 'home.html', {'bands': bands, 'albums': albums})
 
 def band_detail(request, band_id):
     band = get_object_or_404(Band, id=band_id)
-    albums = Album.objects.filter(band=band)  # Get all albums for this band
+    albums = Album.objects.filter(band=band)
     return render(request, 'band_detail.html', {'band': band, 'albums': albums})
 
 def album_detail(request, album_id):
