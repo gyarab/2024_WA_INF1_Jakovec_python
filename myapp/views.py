@@ -13,17 +13,17 @@ def band_detail(request, band_id):
 
 def album_detail(request, album_id):
     album = get_object_or_404(Album, id=album_id)
-    comments = album.comments.all()
+    songs = Song.objects.filter(album=album)
 
     if request.method == "POST":
-        username = request.POST.get("username")
-        text = request.POST.get("text")
+        cover_url = request.POST.get("cover_url")
+        if cover_url:
+            album.cover_url = cover_url
+            album.save()
 
-        if username and text:
-            Comment.objects.create(username=username, text=text, album=album)
-            return redirect('album_detail', album_id=album.id)
+        return redirect('album_detail', album_id=album.id)
 
-    return render(request, 'album_detail.html', {'album': album, 'songs': album.songs.all(), 'comments': comments})
+    return render(request, 'album_detail.html', {'album': album, 'songs': songs})
 
 def song_detail(request, song_id):
     song = get_object_or_404(Song, id=song_id)

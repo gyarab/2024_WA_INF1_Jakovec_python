@@ -3,7 +3,11 @@
 {% block title %}{{ album.title }}{% endblock %}
 
 {% block content %}
+
 <h1>{{ album.title }}</h1>
+{% if album.cover_url %}
+    <img src="{{ album.cover_url }}" alt="Album Cover" width="200">
+{% endif %}
 <p>Vydáno: {{ album.release_year }}</p>
 <p>Interpret: <a href="{% url 'band_detail' album.band.id %}">{{ album.band.name }}</a></p>
 
@@ -26,7 +30,7 @@
             <p>{{ comment.text }}</p>
         </div>
     {% empty %}
-        <p>Žádné komentáře zatím nejsou.</p>
+        <p class="comment-text">Žádné komentáře zatím nejsou.</p>
     {% endfor %}
 </div>
 

@@ -12,6 +12,7 @@ class Album(models.Model):
     title = models.CharField(max_length=100)
     release_year = models.PositiveIntegerField()
     band = models.ForeignKey('myapp.Band', on_delete=models.CASCADE, related_name='albums')
+    cover_url = models.URLField(max_length=200, blank=True, null=True)  # URL to the album cover image
 
     def __str__(self):
         return f"{self.title} - {self.band.name}"
@@ -23,7 +24,7 @@ class Song(models.Model):
 
     def __str__(self):
         return f"{self.title} - {self.album.title}"
-    
+
 class Comment(models.Model):
     username = models.CharField(max_length=100)
     text = models.TextField()
