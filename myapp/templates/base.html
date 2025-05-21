@@ -178,11 +178,18 @@
 <div class="overlay">
     <!-- Navbar -->
     <div class="navbar">
-    <div class="links">
-        <a href="{% url 'account_login' %}">Přihlášení</a>
-        <a href="{% url 'account_signup' %}">Registrace</a>
-        <a href="{% url 'admin:index' %}">Admin</a>
-    </div>
+        <div class="links">
+            {% if user.is_authenticated %}
+                <form method="post" action="{% url 'account_logout' %}" style="display: inline;">
+                    {% csrf_token %}
+                    <a href="#" onclick="this.closest('form').submit(); return false;">Odhlásit se</a>
+                </form>
+            {% else %}
+                <a href="{% url 'account_login' %}">Přihlášení</a>
+                <a href="{% url 'account_signup' %}">Registrace</a>
+            {% endif %}
+            <a href="{% url 'admin:index' %}">Admin</a>
+        </div>
     <!-- Text -->
     <div class="logo">
         <a href="{% url 'home' %}">Databáze Punku</a>

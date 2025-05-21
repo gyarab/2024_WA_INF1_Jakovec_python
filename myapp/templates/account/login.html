@@ -6,7 +6,7 @@
     <form method="post" action="{% url 'account_login' %}">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Log in</button>
+        <button type="submit">Přihlásit se</button>
     </form>
     <p>Nemáš účet? <a href="{% url 'account_signup' %}">Vytvoř si ho tady :&#41;</a></p>
 
