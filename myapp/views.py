@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib import messages
 from .models import Band, Album, Song, Comment, UserRegistrationForm
 
 def home(request):
@@ -14,16 +15,23 @@ def band_detail(request, band_id):
 def album_detail(request, album_id):
     album = get_object_or_404(Album, id=album_id)
     songs = Song.objects.filter(album=album)
+    comments = album.comments.all()
 
     if request.method == "POST":
-        cover_url = request.POST.get("cover_url")
-        if cover_url:
-            album.cover_url = cover_url
-            album.save()
+        if request.user.is_authenticated:
+            text = request.POST.get("text")
+            if text:
+                Comment.objects.create(
+                    user=request.user,
+                    text=text,
+                    album=album
+                )
+                return redirect('album_detail', album_id=album.id)
+        else:
+            messages.error(request, "Musíte být přihlášeni, abyste mohli přidat komentář.")
+            return redirect('account_login')
 
-        return redirect('album_detail', album_id=album.id)
-
-    return render(request, 'album_detail.html', {'album': album, 'songs': songs})
+    return render(request, 'album_detail.html', {'album': album, 'songs': songs, 'comments': comments})
 
 def song_detail(request, song_id):
     song = get_object_or_404(Song, id=song_id)
