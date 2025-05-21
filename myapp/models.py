@@ -1,4 +1,7 @@
 from django.db import models
+from django import forms
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 
 class Band(models.Model):
     name = models.CharField(max_length=100)
@@ -35,3 +38,11 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"{self.username}: {self.text[:50]}"
+
+class UserRegistrationForm(UserCreationForm):
+    email = forms.EmailField(required=True)
+    title = forms.CharField(max_length=20, required=True)
+
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'password1', 'password2')

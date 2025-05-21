@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h2>Registrace</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit">Zaregistrovat</button>
+</form>
+
+<p>Brácho, už máš účet? <a href="{% url 'account_login' %}">Přihlášení</a></p>
+<p>Nebo se přihlas přes:</p>
+<a href="{% provider_login_url 'github' %}">GitHub</a>
+{% endblock %}

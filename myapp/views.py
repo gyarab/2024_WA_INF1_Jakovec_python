@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Band, Album, Song, Comment
+from .models import Band, Album, Song, Comment, UserRegistrationForm
 
 def home(request):
     bands = Band.objects.all()
@@ -38,6 +38,17 @@ def song_detail(request, song_id):
             return redirect('song_detail', song_id=song.id)
 
     return render(request, 'song_detail.html', {'song': song, 'comments': comments})
+
+def register(request):
+    if request.method == "POST":
+        form = UserRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+    else:
+        form = UserRegistrationForm()
+
+    return render(request, 'register.html', {'form': form})
 
 def search(request):
     query = request.GET.get('q', '')
