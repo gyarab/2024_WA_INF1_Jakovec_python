@@ -25,7 +25,7 @@ def band_detail(request, band_id):
 def album_detail(request, album_id):
     album = get_object_or_404(Album, id=album_id)
     songs = Song.objects.filter(album=album)
-    comments = album.comments.all()
+    comments = album.comments.all().order_by('-created_at')
 
     if request.method == "POST":
         if request.user.is_authenticated:
