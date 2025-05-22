@@ -1,6 +1,16 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from .models import Band, Album, Song, Comment, UserRegistrationForm
+import os, random
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+brainrot_path = os.path.join(BASE_DIR, 'brainrot.txt')
+mock_path = os.path.join(BASE_DIR, 'mockmessages.txt')
+
+with open(brainrot_path, encoding='utf-8') as f:
+    BRAINROT_WORDS = [line.strip().lower() for line in f if line.strip()]
+with open(mock_path, encoding='utf-8') as f:
+    MOCK_STRINGS = [line.strip().lower() for line in f if line.strip()]
 
 def home(request):
     bands = Band.objects.all()
@@ -21,6 +31,10 @@ def album_detail(request, album_id):
         if request.user.is_authenticated:
             text = request.POST.get("text")
             if text:
+                lower_text = text.lower()
+                if any(word in lower_text for word in BRAINROT_WORDS):
+                    text += " (" + random.choice(MOCK_STRINGS) + ")"
+
                 Comment.objects.create(
                     user=request.user,
                     text=text,
